@@ -19,13 +19,15 @@
       <div id="separator" class="w-px h-6 bg-[#D9D9D9] rounded-[5px]"></div>
       <LanguageSwitcher />
     </div>
+    <DropDown/>
   </div>
 </template>
 
 <script>
 import NavItem from './NavItem.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import DropDown from './DropDown.vue';
 export default {
-  components: { NavItem, LanguageSwitcher },
+  components: { NavItem, LanguageSwitcher, DropDown },
 }
 </script>
