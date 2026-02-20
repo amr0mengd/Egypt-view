@@ -9,8 +9,14 @@
     <div class="space-x-6 flex items-center">
       <div id="navigation" class="flex space-x-8">
         <nav-item text="Home" :is-active="true"></nav-item>
-        <div>
-          <nav-item text="Services"></nav-item>
+        <div class="relative">
+          <div class="flex items-center" @mouseenter="toggleOpen">
+            <nav-item text="Services"></nav-item>
+            <span class="material-symbols-outlined text-[16px] text-primary align-middle" :class="{'rotate-180': isOpen}">
+              keyboard_arrow_down
+            </span>
+          </div>
+          <DropDown :class="{'hidden': !isOpen, 'block': isOpen}" @mouseleave="toggleOpen"/>
         </div>
         <nav-item text="Gallery"></nav-item>
         <nav-item text="About"></nav-item>
@@ -19,15 +25,24 @@
       <div id="separator" class="w-px h-6 bg-[#D9D9D9] rounded-[5px]"></div>
       <LanguageSwitcher />
     </div>
-    <DropDown/>
   </div>
 </template>
 
 <script>
 import NavItem from './NavItem.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
-import DropDown from './DropDown.vue';
+import DropDown from './DropDown.vue'
 export default {
   components: { NavItem, LanguageSwitcher, DropDown },
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
+  methods: {
+    toggleOpen() {
+      this.isOpen = !this.isOpen
+    },
+  },
 }
 </script>
